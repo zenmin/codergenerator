@@ -24,13 +24,8 @@ public class MainHandle{
     GenActionAndService genActionAndService;
 
     public String genAll() throws Exception {
-        //生成java实体类
         Map<String, Object> map = genJavaBean.GenBean();
         genActionAndService.genAll(map);
-
-
-
-
         return COMPONY;
     }
 

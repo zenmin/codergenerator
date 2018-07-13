@@ -31,6 +31,8 @@ public class GenActionAndService {
         this.genService(map);
         this.genAction(map);
         this.genBeansXML(map);
+        this.genHTML(map);
+        this.genJS(map);
         return "true";
     }
 
@@ -60,6 +62,24 @@ public class GenActionAndService {
         }
         this.generateFileByTemplate("Beans.ftl",beanFile,map);
         System.out.println("生成Beans.xml成功，文件："+ beanFile);
+    }
+
+    public void genHTML(Map<String,Object> map) throws Exception {
+        File beanFile = new File(REALPATH + map.get("title") + ".html");
+        if(!beanFile.exists()){
+            beanFile.createNewFile();
+        }
+        this.generateFileByTemplate("HTML.ftl",beanFile,map);
+        System.out.println("生成HTML成功，文件："+ beanFile);
+    }
+
+    public void genJS(Map<String,Object> map) throws Exception {
+        File beanFile = new File(REALPATH + map.get("title") + ".js");
+        if(!beanFile.exists()){
+            beanFile.createNewFile();
+        }
+        this.generateFileByTemplate("JS.ftl",beanFile,map);
+        System.out.println("生成JS成功，文件："+ beanFile);
     }
 
     private void generateFileByTemplate(final String templateName, File file, Map<String,Object> dataMap) throws Exception{

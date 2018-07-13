@@ -88,6 +88,7 @@ public class GenJavaBean {
                     index2 = n.indexOf(' ');
                 }
                 alone.put("zh",n.substring(0,index2));
+                alone.put("num",String.valueOf(i+1));
             }else{
                 int index1 = t.indexOf('\t');
                 if(index1 == -1){
@@ -102,6 +103,7 @@ public class GenJavaBean {
                 if(index2 == -1){
                     index2 = n.indexOf(' ');
                 }
+                alone.put("num",String.valueOf(i+1));
                 alone.put("zh",n.substring(0,index2));
             }
             list.add(alone);
@@ -110,7 +112,7 @@ public class GenJavaBean {
         //执行生成
         Map<String,Object> map = new HashMap<>() ;
         this.generateFileByTemplate("JavaBean.ftl",beanFile,map);
-        System.out.println("生成POJO成功：" + realPath + "输出目录\\" + beanName+".java");
+        System.out.println("生成POJO成功，文件：" + realPath + "输出目录\\" + beanName+".java");
 
         //删除临时文件
         File tempdel = new File(REALPATH + FILENAME + "2");
